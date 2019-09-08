@@ -9,15 +9,15 @@ public class Viestitieto extends Tietue {
     String arkistotunnus;
     String kirjauspaiva;
     String viesti;
-    
+
     public Viestitieto( String line ) {
         super(line);
-        tapahtumanNumero = Integer.parseInt( line.substring(6,12));
-        arkistotunnus = line.substring(12,30).trim();
-        kirjauspaiva = line.substring(30,36).trim();
-        viesti = line.substring(36,71).trim();
+        tapahtumanNumero = Integer.parseInt( line.substring(6, 12) );
+        arkistotunnus = line.substring(12, 30).trim();
+        kirjauspaiva = line.substring(30, 36).trim();
+        viesti = line.substring(36, 71).trim();
     }
-    
+
     public String toString() {
         StringBuffer sb = new StringBuffer();
         sb.append( super.toString() );
@@ -29,4 +29,3 @@ public class Viestitieto extends Tietue {
     }
 
 }
-

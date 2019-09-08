@@ -19,10 +19,10 @@ public class Tietue {
     public static final String TAPAHTUMA_LISATIETUE = "11";
     public static final String VIESTITIETO = "30";
     public static final String SALDOTIETUE = "40";
-    
+
     public static DateFormat format = new SimpleDateFormat( "yyMMdd" );
     public static DateFormat timeFormat = new SimpleDateFormat( "yyMMddHHmm" );
-    
+
     String aineistoTunnus;
     String tietueTunnus;
     int tietueenPituus;
@@ -34,7 +34,7 @@ public class Tietue {
     public static Tietue getInstance( BufferedReader reader ) throws IOException, ParseException {
         String line = reader.readLine();
         if( line == null ) return null;
-        String tietuetunnus = line.substring(1,3).trim();
+        String tietuetunnus = line.substring(1, 3).trim();
         if( tietuetunnus.equals( TILIOTE_PERUSTIETUE ) ) return new Perustietue( line );
         if( tietuetunnus.equals( TAPAHTUMA_PERUSTIETUE ) ) {
             Tapahtuma tapahtuma = new Tapahtuma( line );
@@ -42,10 +42,11 @@ public class Tietue {
             while( newDetail ) {
                 reader.mark( 1000 );
                 line = reader.readLine();
-                tietuetunnus = line.substring(1,3);
+                tietuetunnus = line.substring(1, 3);
                 if( tietuetunnus.equals( TAPAHTUMA_LISATIETUE ) ) {
                     Lisatietue lisatietue = new Lisatietue( line );
                     tapahtuma.lisatietueet.add( lisatietue );
+                    System.out.println(lisatietue.toString());
                 } else if( tietuetunnus.equals( VIESTITIETO ) ) {
                     Viestitieto viesti = new Viestitieto( line );
                     tapahtuma.viestitieto = viesti;
@@ -62,17 +63,18 @@ public class Tietue {
                     newDetail = false;
                 }
             }
+
             return tapahtuma;
         }
         return new Tietue( line );
     }
-    
+
     public Tietue( String line ) {
-        aineistoTunnus = line.substring(0,1).trim();
-        tietueTunnus = line.substring(1,3).trim();
-        tietueenPituus = Integer.parseInt( line.substring( 3, 6 ) );
+        aineistoTunnus = line.substring(0, 1).trim();
+        tietueTunnus = line.substring(1, 3).trim();
+        tietueenPituus = Integer.parseInt( line.substring(3, 6) );
     }
-    
+
     public String toString() {
         StringBuffer sb = new StringBuffer();
         sb.append( "Aineistotunnus: " ).append( aineistoTunnus ).append( "\n" );
@@ -81,4 +83,3 @@ public class Tietue {
         return sb.toString();
     }
 }
-

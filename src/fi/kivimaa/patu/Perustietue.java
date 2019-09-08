@@ -28,31 +28,31 @@ public class Perustietue extends Tietue {
     String pankkikohtaistaTietoa;
     String IBAN;
     String BIC;
-    
+
     public Perustietue( String line ) throws ParseException {
         super(line);
         versionumero = line.substring(6, 9).trim();
-        tilinumero = line.substring(9,23).trim();
-        tiliotteenNumero = line.substring(23,26).trim();
-        vuosi = line.substring(26,28).trim();
-        tilioteKausiAlku = format.parse( line.substring(26,32).trim() );
-        tilioteKausiLoppu = format.parse( line.substring(32,38).trim() );
-        muodostamisAika = timeFormat.parse( line.substring(38,48).trim() );
-        asiakasTunnus = line.substring(48,65).trim();
-        alkusaldonPaivays = format.parse( line.substring(65,71).trim() );
-        tiliotteenAlkusaldo = Double.parseDouble( line.substring(71, 90) ) / 100;
+        tilinumero = line.substring(9, 23).trim();
+        tiliotteenNumero = line.substring(23, 26).trim();
+        vuosi = line.substring(26, 28).trim();
+        tilioteKausiAlku = format.parse( line.substring(26, 32).trim() );
+        tilioteKausiLoppu = format.parse( line.substring(32, 38).trim() );
+        muodostamisAika = timeFormat.parse( line.substring(38, 48).trim() );
+        asiakasTunnus = line.substring(48, 65).trim();
+        alkusaldonPaivays = format.parse( line.substring(65, 71).trim() );
+        tiliotteenAlkusaldo = Double.parseDouble( line.substring(71, 90) ) / 100.0D;
         tiliotteenTietueidenLukumaara = Integer.parseInt( line.substring(90, 96) );
-        tilinValuutanTunnus = line.substring(96,99).trim();
-        tilinNimi = line.substring(99,129).trim();
-        tilinLimiitti = Double.parseDouble( line.substring(129, 147) ) / 100;
-        tilinomistajanNimi = line.substring(147,182).trim();
-        yhteydenottotieto1 = line.substring(182,222).trim();
-        yhteydenottotieto2 = line.substring(222,262).trim();
-        pankkikohtaistaTietoa = line.substring(262,292).trim();
-        IBAN = line.substring(292,310).trim();
-        BIC = line.substring(310,321).trim();
+        tilinValuutanTunnus = line.substring(96, 99).trim();
+        tilinNimi = line.substring(99, 129).trim();
+        tilinLimiitti = Double.parseDouble( line.substring(129, 147) ) / 100.0D;
+        tilinomistajanNimi = line.substring(147, 182).trim();
+        yhteydenottotieto1 = line.substring(182, 222).trim();
+        yhteydenottotieto2 = line.substring(222, 262).trim();
+        pankkikohtaistaTietoa = line.substring(262, 292).trim();
+        IBAN = line.substring(292, 310).trim();
+        BIC = line.substring(310, 321).trim();
     }
-    
+
     public String toString() {
         StringBuffer sb = new StringBuffer();
         sb.append( super.toString() );
@@ -77,4 +77,3 @@ public class Perustietue extends Tietue {
         return sb.toString();
     }
 }
-
