@@ -79,10 +79,7 @@ public class Ropecon {
 
     protected List<TiliTripletti> etsiTilit(String selite, String viite,
             String osapuoli, double summa) throws SQLException {
-        List<TiliTripletti> retList = etsiLaskunViitteella( viite, summa, selite );
-        if( retList != null ) {
-            return retList;
-        }
+        List<TiliTripletti> retList = null;
 
         // Ensisijaisesti haetaan saajan nimellä
         retList = etsiSaajanNimella( osapuoli, summa, selite );
