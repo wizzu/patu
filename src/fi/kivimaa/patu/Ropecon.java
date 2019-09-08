@@ -99,7 +99,9 @@ public class Ropecon {
             retList = new ArrayList<TiliTripletti>();
             for( TiliTripletti tili: puraSeliteAuki( selite, summa ) ) {
                 List<TiliTripletti> l = etsiNumerolla( tili.tili, tili.summa, tili.selite );
-                if (l != null) retList.addAll(l);
+                if (l != null) {
+                    retList.addAll(l);
+                }
             }
             if( retList.size() > 0 ) {
                 return retList;
