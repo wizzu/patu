@@ -42,6 +42,11 @@ public class Tietue {
             while( newDetail ) {
                 reader.mark( 1000 );
                 line = reader.readLine();
+                if( line == null ) {
+                    reader.reset();
+                    newDetail = false;
+                    break;
+                }
                 tietuetunnus = line.substring(1, 3);
                 if( tietuetunnus.equals( TAPAHTUMA_LISATIETUE ) ) {
                     Lisatietue lisatietue = new Lisatietue( line );
