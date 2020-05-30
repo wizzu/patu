@@ -13,8 +13,21 @@ public class Lisatietue extends Tietue {
     public Lisatietue( String line ) {
         super(line);
         lisatiedonTyyppi = Integer.parseInt( line.substring(6, 8) );
-        numerodata = line.substring(8, 43).trim();
-        lisatieto = line.substring(43).trim();
+        switch (lisatiedonTyyppi) {
+            case 0:
+                numerodata = "";
+                lisatieto = line.substring(8).trim();
+                break;
+            default:
+                if (line.length() < 43) {
+                    numerodata = line.substring(8).trim();
+                    lisatieto = "";
+                } else {
+                    numerodata = line.substring(8, 43).trim();
+                    lisatieto = line.substring(43).trim();
+                }
+                break;
+        }
     }
 
     public String toString() {
