@@ -131,8 +131,10 @@ public class Ropecon {
         long id = 0;
         long invoice = 0;
 
-        if( m_debugOnly )
-          return;
+        if( m_debugOnly ) {
+            System.out.println("-- Ei vientiä (debug asetettu) --");
+            return;
+        }
 
         if( tilit.size() == 1 && tilit.get( 0 ).tiliNimi == null ) {
             // Tämä on laskun maksu, ei GL-taulun vientiä
@@ -243,6 +245,7 @@ public class Ropecon {
         }
         System.out.println("Tilit: " + tilit);
         teeVienti( m_vuosi + "-" + m_tiliote + "-" + tapahtuma.tapahtumanNumero, paivays, tilit, saaja );
+        System.out.println("-- Vienti tehty --");
     }
 
     // Puretaan auki muodossa TILINUMERO SUMMA SELITE TILINUMERO SUMMA SELITE...
